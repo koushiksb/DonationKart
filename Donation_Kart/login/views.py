@@ -26,7 +26,7 @@ def user_login(request):
             elif admin.is_active and x.user_type == 'C':
                 login(request,admin)
                 #return HttpResponseRedirect(reverse('cus_login:home'))
-                return render(request, 'userlogin/accounts.html')
+                return render(request, 'User/home.html')
             else:
                 return HttpResponse("Account has been diasabled!")
         else:
@@ -35,8 +35,3 @@ def user_login(request):
     form=AuthenticationForm()
     print(form)
     return render(request, 'userlogin/index.html',{'form':form})
-
-def view_profile(request):
-    args = {'user': request.user}
-    print(request.user)
-    return render(request, 'userlogin/profile.html', args)

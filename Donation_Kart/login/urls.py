@@ -5,7 +5,7 @@ app_name = 'login'
 
 urlpatterns = [
     re_path('^$', views.home, name="login.home"),
-    path('accounts/', views.login, name="login.login"),
-    path('profile/', views.view_profile, name='login.view_profile'),
+    path('accounts/', views.user_login, name="login.user_login"),
+    
 
 ]

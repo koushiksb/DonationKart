@@ -1,3 +1,4 @@
+{% extends 'userlogin/base.html' %}
 <!DOCTYPE html>
 {% load staticfiles %}
 {% load static %}
@@ -14,10 +15,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{% static "userlogin/css/profile.css" %}">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="/resources/demos/style.css">
+
 
   </head>
   <body style="width:100%;background-color:#f7f7f7;">
+    {% block body %}
   <div class="row" style="border:2px solid #c1c1c1;padding:10px;">
         <div class="col-1"></div>
         <div class="col-3" style="border-right:1px solid #d5d5d5;">
@@ -34,7 +36,7 @@
             <th>
               <td class="box" style="width:15%;background-color:#e1e1e1"><button id="b1" style="width:100%;" type="button" class="btn btn-link" id="home">HOME</button> </td>
               <td class="box" style="width:15%;"><button id="b2" style="width:100%;" type="button" class="btn btn-link" id="address">ADDRESS</button> </td>
-              <td class="box" style="width:15%;"><button id="b3" style="width:30%;" type="button" class="btn btn-link" id="setting">SETTINGS</button> </td>
+              <td class="box" style="width:15%;"><button id="b3" style="width:100%;" type="button" class="btn btn-link" id="setting">SETTINGS</button> </td>
             </th>
           </table>
 
@@ -97,7 +99,7 @@
               </form>
             <div class="col-12" id="div3" style="display:none;">
               <br>
-              <form method="POST" action="{% url 'userlogin.change_password' %}">
+              <form method="POST" action="{% url 'userlogin:userlogin.change_password' %}">
                 {% csrf_token %}
                 <h5 style="color:#13bef0">Change Password</h5><br>
                 <div class="row">
@@ -177,5 +179,6 @@
         b1.disabled=true;
       }
     </script>
+    {% endblock %}
   </body>
 </html>

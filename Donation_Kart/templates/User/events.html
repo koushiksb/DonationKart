@@ -1,8 +1,10 @@
+{% extends 'userlogin/base.html' %}
 {% load static %}
 
 <!DOCTYPE html>
 <html>
 <head>
+  {% block extrahead %}
   <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -25,95 +27,9 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-#navbar {
-  overflow: hidden;
-  background-color: #f1f1f1;
-  padding: 70px 100px;
-  transition: 0.2s;
-  position: fixed;
-  width: 100%;
-  top: 50px;
-  z-index: 70;
-}
-
-#navbar a {
-  float: left;
-  color: black;
-  text-align: center;
-  padding: 30px;
-  text-decoration: none;
-  font-size: 35px;
-  line-height: 25px;
-  border-radius: 4px;
-}
-
-#navbar #logo {
-  font-size: 60px;
-  font-weight: bold;
-  transition: 0.4s;
-}
-
-#navbar a:hover {
-
-  color: #FF8C00;
-}
-
-#navbar a.active {
-
-  color: #FF8C00;
-}
-
-#navbar-right {
-  float: right;
-}
-
-@media screen and (max-width: 580px) {
-  #navbar {
-    padding: 20px 10px !important;
-  }
-  #navbar a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
-  #navbar-right {
-    float: none;
-  }
 #div1 {
   font-size:40px;
 }
-}
-</style>
-<style>
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-
-  overflow: hidden;
-  border: 0px solid #e7e7e7;
-  background-color: #FF8C00;
-}
-
-li {
-  float: left;
-}
-
-li a {
-  display: block;
-  color: #666;
-  text-align: center;
-  padding: 50px 16px;
-  text-decoration: none;
-}
-
-li a:hover:not(.active) {
-  background-color: #ddd;
-}
-
-li a.active {
-  color: white;
-  background-color: #4CAF50;
 }
 </style>
 <style>
@@ -133,15 +49,6 @@ li a.active {
 }
 
 
-a {
-  text-decoration: none;
-  font-size: 22px;
-  color: black;
-}
-
-a:hover {
-  opacity: 0.7;
-}
   .quantity {
     position: relative;
   }
@@ -246,23 +153,11 @@ input[type=number]::-webkit-inner-spin-button {
 
 
 </style>
+{% endblock %}
 </head>
 <body style="background-color:#e6e6e6;">
+{% block body %}
 
-  <ul>
-    <li><a></a></li>
-  </ul>
-
-<div id="navbar" style="background-color:#f2f2f2;">
-  <a href="{% url 'User:home' %}" id="logo">Donate <i id="div1" class="fa"></i> Kart</a>
-  <div id="navbar-right">
-    <a  href="{% url 'User:home' %}"><i class="fa fa-home"></i>Home</a>
-    <a class="active" href="{% url 'User:events' %}"><i class="fa fa-globe"></i>Camps</a>
-    <a  href="{% url 'User:cart' %}"><i class="fa fa-shopping-cart"></i>Cart</a>
-    <a href="http://127.0.0.1:8080/profile"><i class="fa fa-user icon"></i>Profile</a>
-    <a href="{% url 'logout' %}"><i class="fa fa-sign-out"></i>Logout</a>
-  </div>
-</div>
 <table style="width:100%;padding:50px 0px 50px;margin-top:300px;" >
   <tr>
     <td style="width:70%;padding:50px 100px  150px 200px">
@@ -314,7 +209,7 @@ input[type=number]::-webkit-inner-spin-button {
       <a href="{% url 'User:filter' "education" %}" style="padding:20px 10px;color:#8c8c8c;">Education</a><br>
       <a href="{% url 'User:filter' "Ngo" %}" style="padding:20px 10px;color:#8c8c8c;">Support NGOs</a><br>
       <a href="{% url 'User:filter' "desasters" %}" style="padding:20px 10px;color:#8c8c8c;">Natural Disasters</a><br>
-      <a href="{% url 'foodtruck.foodrequest' %}" style="padding:20px 10px;color:#8c8c8c;">Food</a><br>
+      <a href="{% url 'foodtruck:foodtruck.foodrequest' %}" style="padding:20px 10px;color:#8c8c8c;">Food</a><br>
       <a href="#" style="padding:20px 10px;color:#8c8c8c;">Personal</a><br>
       <a href="#" style="padding:20px 10px;color:#8c8c8c;">Blood</a><br>
       </div><br>
@@ -360,5 +255,6 @@ function hourglass() {
 hourglass();
 setInterval(hourglass, 3000);
 </script>
+{% endblock %}
 </body>
 </html>
