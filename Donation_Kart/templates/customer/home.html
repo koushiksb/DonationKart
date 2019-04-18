@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+<html lang="en" dir="ltr">
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta charset="utf-8">
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+    <link rel="shortcut icon" type="image/x-icon" href="../../static/images/favicon.ico" />
+    <link href='https://fonts.googleapis.com/css?family=Acme' rel='stylesheet'>
+    <link rel="stylesheet" href="../../static/css/home2.css">
+    <title>Fund Hub</title>
+  </head>
+  <body>
+    <br><br><br><br>
+    <form method="POST">
+      {% csrf_token %}
+      <h1 id="head">RAISE FUND</h1>
+      <br>
+      <div class="row">
+        <div class="col-4"></div>
+        <div class="col-2">
+          <div class="form-group">
+            <label for="uname"> Username : </label>
+            {{ form.username|as_crispy_field }}
+            {% if err.username %}
+              <p class="err"> {{ err.username }} </p>
+            {% endif %}
+          </div>
+          <div class="form-group">
+            <label for="amt"> Amount : </label>
+            {{ form.amount|as_crispy_field }}
+            {% if err.amount %}
+              <p class="err"> {{ err.amount }} </p>
+            {% endif %}
+          </div>
+        </div>
+        <div class="col-2">
+          <div class="form-group">
+            <label for="title"> Title : </label>
+            {{ form.request_header|as_crispy_field }}
+            {% if err.request_header %}
+              <p class="err"> {{ err.request_header }} </p>
+            {% endif %}
+          </div>
+          <div class="form-group">
+            <label for="date"> By Date : </label>
+            {{ form.by_date|as_crispy_field }}
+            {% if err.by_date %}
+              <p class="err"> {{ err.by_date }} </p>
+            {% endif %}
+          </div>
+        </div>
+        <div class="col-6"></div>
+      </div>
+      <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+          <div class="form-group">
+            <label for="descrip"> Description : </label>
+            {{ form.description|as_crispy_field }}
+            {% if err.description %}
+              <p class="err"> {{ err.description }} </p>
+            {% endif %}
+          </div>
+          <center><input style="width:37%;" class="btn btn-primary" type="submit" name="submit" value="Submit"></center>
+        </div>
+        <div class="col-2"></div>
+      </div>
+    </form><br>
+    {% for a in x %}
+      <a href="{% url 'forum:home_with_pk' pk=a.pk %}">Donate</a>
+    {% endfor %}
+  </body>
+</html>
