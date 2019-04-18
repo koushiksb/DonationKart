@@ -1,5 +1,5 @@
 from django.db import models
-from phonenumber_field.modelfields import PhoneNumberField
+#from phonenumber_field.modelfields import PhoneNumberField
 from userlogin.models import Profile
 from django.contrib.auth.models import User
 import sys
@@ -52,5 +52,5 @@ class Cart(models.Model):
     amount=models.PositiveIntegerField(default=0, blank=False, null = False)
 
     def delete(self):
-        
+
         return 0

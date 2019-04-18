@@ -98,7 +98,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME':'Donation_Kart',
         'USER':'root',
-        'PASSWORD':'20011804',
+        'PASSWORD':'proxyerror',
         'HOST':'localhost',
         'PORT':'',
     }
