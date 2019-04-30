@@ -8,61 +8,79 @@
     <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
     <link rel="shortcut icon" type="image/x-icon" href="../../static/images/favicon.ico" />
     <link href='https://fonts.googleapis.com/css?family=Acme' rel='stylesheet'>
-
+    <link rel="stylesheet" href="../../static/css/home2.css">
     <title>Fund Hub</title>
   </head>
-  <body>
+  <body style="background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('https://www.experto.de/wp-content/uploads/2019/02/AdobeStock_203485926.jpeg'); background-size:cover;">
     <br><br><br><br>
-    <form method="POST">
-      {% csrf_token %}
-      <h1 style="text-align:center;" id="head">RAISE FUND</h1>
-      <br>
-      <div class="row">
-        <div class="col-4"></div>
-        <div class="col-2">
-          <div class="form-group">
-            <label for="amt"> Amount : </label>
-            {{ form.amount|as_crispy_field }}
-            {% if err.amount %}
-              <p class="err"> {{ err.amount }} </p>
-            {% endif %}
+    <div class="row">
+      <div class="col-4"></div>
+      <div class="col-5" style="margin-left:-2%;">
+        <form method="POST" style="padding-bottom: 10%;color:#555555;padding:7%;border:1px solid #777777; border-radius:1.5%;background-color:rgba(255,255,255,0.4);">
+          {% csrf_token %}
+          <center><h1>RAISE FUND</h1></center>
+          <br>
+          <div class="row">
+            <div class="col-6">
+              <div class="form-group">
+                <label for="uname"> Image : </label>
+                {{ form.pic|as_crispy_field }}
+                {% if err.pic %}
+                  <p class="err"> {{ err.pic }} </p>
+                {% endif %}
+              </div>
+              <div class="form-group">
+                <label for="amt"> Amount : </label>
+                {{ form.amount|as_crispy_field }}
+                {% if err.amount %}
+                  <p class="err"> {{ err.amount }} </p>
+                {% endif %}
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <label for="title"> Title : </label>
+                {{ form.request_header|as_crispy_field }}
+                {% if err.request_header %}
+                  <p class="err"> {{ err.request_header }} </p>
+                {% endif %}
+              </div>
+              <div class="form-group">
+                <label for="date"> By Date : </label>
+                {{ form.by_date|as_crispy_field }}
+                {% if err.by_date %}
+                  <p class="err"> {{ err.by_date }} </p>
+                {% endif %}
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="col-2">
-          <div class="form-group">
-            <label for="title"> Title : </label>
-            {{ form.request_header|as_crispy_field }}
-            {% if err.request_header %}
-              <p class="err"> {{ err.request_header }} </p>
-            {% endif %}
+          <div class="row">
+            <div class="col-12">
+              <div class="form-group">
+                <label for="descrip"> Description : </label>
+                {{ form.description|as_crispy_field }}
+                {% if err.description %}
+                  <p class="err"> {{ err.description }} </p>
+                {% endif %}
+              </div>
+              <center><input style="width:37%;" class="btn btn-primary" type="submit" name="submit" value="Submit"></center>
+            </div>
           </div>
-          <div class="form-group">
-            <label for="date"> By Date : </label>
-            {{ form.by_date|as_crispy_field }}
-            {% if err.by_date %}
-              <p class="err"> {{ err.by_date }} </p>
-            {% endif %}
-          </div>
-        </div>
-        <div class="col-6"></div>
+        </form><br>
       </div>
-      <div class="row">
-        <div class="col-4"></div>
-        <div class="col-4">
-          <div class="form-group">
-            <label for="descrip"> Description : </label>
-            {{ form.description|as_crispy_field }}
-            {% if err.description %}
-              <p class="err"> {{ err.description }} </p>
-            {% endif %}
-          </div>
-          <center><input style="width:37%;" class="btn btn-primary" type="submit" name="submit" value="Submit"></center>
-        </div>
-        <div class="col-2"></div>
+      <div class="col-3" style="padding-top:2%;border:1px solid #555555;overflow-y:scroll;">
+        <h4 style="text-align:center;color:#444444;">Help Others</h4>
+        <table class="table table-striped" style="margin-top:7%;">
+          <tbody>
+            {% for a in x %}
+              <tr>
+                <td><a style="text-decoration:none;color:#33ba27;font-size:18px;" href="{% url 'forum:home_with_pk' pk=a.pk %}">{{ a.request_header }}</a></td>
+                <td><a style="text-decoration:none;color:#33ba27;font-size:18px;" href="{% url 'forum:home_with_pk' pk=a.pk %}">{{ a.by_date }}</a></td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
       </div>
-    </form><br>
-    {% for a in x %}
-      <a href="{% url 'forum:home_with_pk' pk=a.pk %}">Donate</a>
-    {% endfor %}
+    </div>
   </body>
 </html>

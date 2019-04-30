@@ -10,7 +10,7 @@ class request(models.Model):
     amount = models.IntegerField(validators=[MinValueValidator(50000),])
     by_date = models.DateField()
     pic = models.ImageField(upload_to='requests', default='static/userlogin/images/default-img.png')
-    request_date = models.DateField()
+    request_date = models.DateField(default=datetime.now())
 
     def __str__(self):
         return self.request_header

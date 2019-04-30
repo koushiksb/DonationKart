@@ -18,6 +18,6 @@ def home(request, pk):
         comments = commentinfo.objects.filter(to = forum.pk)
         print(forum)
         print(comments)
-        return render(request, 'forum/base.html', {'forum':forum, 'comments':comments, 'reqs':reqs,})
+        return render(request, 'forum/base.html', {'reqs':reqs, 'forum':forum, 'comments':comments})
     else:
         return HttpResponseRedirect(reverse('cus_login:home'));
