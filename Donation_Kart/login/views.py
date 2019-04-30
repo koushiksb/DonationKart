@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from django.contrib.auth.forms import AuthenticationForm
@@ -35,7 +35,3 @@ def user_login(request):
     form=AuthenticationForm()
     print(form)
     return render(request, 'userlogin/index.html',{'form':form})
-
-def logout(request):
-    logout(request)
-    return HttpResponseRedirect(reverse(''))
