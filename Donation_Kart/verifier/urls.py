@@ -7,4 +7,8 @@ app_name='admin_login'
 urlpatterns=[
     path('home/', views.home, name='home'),
     path('logout/', views.logout_view, name='logout'),
+    path('req_appoint/(?P<pk>\d+)/', views.req_appoint, name='req_appoint'),
+    path('req_cancel/(?P<pk>\d+)/', views.req_cancel, name='req_cancel'),
+    path('req2_verify/(?P<pk>\d+)/', views.req2_verify, name='req2_verify'),
+    path('req2_cancel/(?P<pk>\d+)/', views.req2_cancel, name='req2_cancel'),
 ]

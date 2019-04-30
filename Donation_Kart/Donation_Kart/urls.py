@@ -44,7 +44,10 @@ urlpatterns = [
         name="password_reset_complete"),
     path('foodtruck/', include('foodtruck.urls')),
     # path('verf/', include('admin.urls')),
-    #path('Personal/',include('customer.urls')),
+    path('Personal/',include('customer.urls')),
     path('User/',include('User.urls')),
+    path('verf/', include('verifier.urls')),
+    path('forum/', include('forum.urls')),
+    path('reliffunds/', include('funds.urls')),
 ]
 urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

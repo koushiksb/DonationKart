@@ -35,3 +35,7 @@ def user_login(request):
     form=AuthenticationForm()
     print(form)
     return render(request, 'userlogin/index.html',{'form':form})
+
+def logout(request):
+    logout(request)
+    return HttpResponseRedirect(reverse(''))

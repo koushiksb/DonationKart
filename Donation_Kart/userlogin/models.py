@@ -34,6 +34,7 @@ class Profile(models.Model):
         ('C', 'Customer')
     )
     user_type=models.CharField(choices=user_choice, max_length=2, default='C')
+    signedup_time=models.DateTimeField(auto_now_add=True)
 
 
 

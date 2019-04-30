@@ -87,7 +87,7 @@ def edit_profile(request):
             user_form.save()
             profile_form.save()
             messages.success(request, ('Your profile was successfully updated!'))
-            return redirect('login.login')
+            return redirect('login:login.user_login')
         else:
             messages.error(request, ('Please correct the error below.'))
     else:

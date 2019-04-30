@@ -25,6 +25,7 @@
         <div class="col-3" style="border-right:1px solid #d5d5d5;">
           <center>
             <br>
+
             <img src="{{user.profile.picture.url}}" class="img-thumbnail" alt="error!" style="border-radius:50%;height:auto;width:100px;"><br><br>
               {{ profile_form.picture|as_crispy_field }}
 
@@ -41,7 +42,7 @@
           </table>
 
           <div class="row">
-                <form method="POST">
+                <form method="POST" >
                 {% csrf_token %}
             <div class="col-12" id="div1">
               <br>
