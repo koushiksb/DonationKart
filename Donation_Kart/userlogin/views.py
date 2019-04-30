@@ -82,15 +82,18 @@ def edit_profile(request):
     if request.method == 'POST':
         passform = PasswordChangeForm(request.user, request.POST)
         user_form = EditProfileForm(request.POST,instance=request.user)
+        print(user_form)
         profile_form = UserProfileForm(request.POST, request.FILES,instance=request.user.profile)
         if user_form.is_valid() and profile_form.is_valid():
+            print(user_form)
             user_form.save()
             profile_form.save()
             messages.success(request, ('Your profile was successfully updated!'))
-            return redirect('login:login.user_login')
+            return redirect('user_login:user_login.edit_profile')
         else:
             messages.error(request, ('Please correct the error below.'))
     else:
+        print('outside')
         user_form = EditProfileForm(instance=request.user)
         profile_form = UserProfileForm(instance=request.user.profile)
         passform = PasswordChangeForm(request.user, request.POST)

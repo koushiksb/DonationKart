@@ -100,7 +100,7 @@
               </form>
             <div class="col-12" id="div3" style="display:none;">
               <br>
-              <form method="POST" action="{% url 'userlogin:userlogin.change_password' %}">
+              <form method="POST" action="{% url 'userlogin:userlogin.change_password' %">
                 {% csrf_token %}
                 <h5 style="color:#13bef0">Change Password</h5><br>
                 <div class="row">

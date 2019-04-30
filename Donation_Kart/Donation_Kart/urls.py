@@ -49,5 +49,6 @@ urlpatterns = [
     path('verf/', include('verifier.urls')),
     path('forum/', include('forum.urls')),
     path('reliffunds/', include('funds.urls')),
+    path('paytm/', include('paytm.urls')),
 ]
 urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

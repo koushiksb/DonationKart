@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'User',
     'foodtruck',
     'funds',
+    'paytm',
 ]
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
@@ -89,6 +90,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'Donation_Kart.wsgi.application'
+
 
 
 # Database
@@ -137,6 +139,18 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+
+PAYTM_MERCHANT_KEY = "TqI9Kw%PGIPbWVt_"
+PAYTM_MERCHANT_ID = "MdMGYa60017632655016"
+HOST_URL = "http://localhost:8080"
+PAYTM_CALLBACK_URL = "/paytm/response/"
+
+if DEBUG:
+    PAYTM_MERCHANT_KEY = "TqI9Kw%PGIPbWVt_"
+    PAYTM_MERCHANT_ID = "MdMGYa60017632655016"
+    PAYTM_WEBSITE = 'WEB_STAGING'
+    HOST_URL = 'http://localhost:8000'
 
 
 # Static files (CSS, JavaScript, Images)
