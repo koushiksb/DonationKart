@@ -57,7 +57,8 @@ INSTALLED_APPS = [
     'foodtruck',
     'funds',
     'paytm',
-    'bcamp'
+    'bcamp',
+    'Blood_blog',
 ]
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 

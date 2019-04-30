@@ -28,6 +28,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('login.urls')),
     path('bcamp/',include('bcamp.urls')),
+    path('Bloodblog/',include('Blood_blog.urls')),
     path('userlogin/', include('userlogin.urls')),
     path('signup/',userlogin.views.signup,name="userlogin.signup"),
     path('login/',views.user_login,name='login'),
