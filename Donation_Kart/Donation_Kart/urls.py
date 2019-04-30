@@ -27,6 +27,7 @@ import userlogin
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('login.urls')),
+    path('bcamp/',include('bcamp.urls')),
     path('userlogin/', include('userlogin.urls')),
     path('signup/',userlogin.views.signup,name="userlogin.signup"),
     path('login/',views.user_login,name='login'),

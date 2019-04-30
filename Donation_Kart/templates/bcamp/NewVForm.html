@@ -1,0 +1,14 @@
+{% extends "bcamp/base.html" %}
+{% load crispy_forms_tags %}
+{% load staticfiles %}
+{% block content %}
+
+<div class="container">
+  <form method="POST">
+    {% csrf_token %}
+    {{Vform}}
+    <input type="submit" name="" value="submit">
+  </form>
+
+</div>
+{% endblock %}
