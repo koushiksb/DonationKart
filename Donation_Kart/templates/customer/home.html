@@ -1,8 +1,10 @@
+{% extends 'userlogin/base.html' %}
 <!DOCTYPE html>
 {% load staticfiles %}
 {% load crispy_forms_tags %}
 <html lang="en" dir="ltr">
   <head>
+    {% block extrahead %}
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <meta charset="utf-8">
     <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
@@ -10,8 +12,11 @@
     <link href='https://fonts.googleapis.com/css?family=Acme' rel='stylesheet'>
     <link rel="stylesheet" href="../../static/css/home2.css">
     <title>Fund Hub</title>
+    {% endblock %}
   </head>
+  {% block body %}
   <body style="background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('https://www.experto.de/wp-content/uploads/2019/02/AdobeStock_203485926.jpeg'); background-size:cover;">
+
     <br><br><br><br>
     <div class="row">
       <div class="col-4"></div>
@@ -82,5 +87,9 @@
         </table>
       </div>
     </div>
+
   </body>
+  {% endblock %}
+
+
 </html>

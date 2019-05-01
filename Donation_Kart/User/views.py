@@ -123,8 +123,8 @@ def proceed(request):
                     itemsremaining=e.itemsremaining-c.Quantity
                     Event.objects.filter(eventid=e.eventid).update(itemsremaining=itemsremaining)
                     Cart.objects.filter(user=user).delete()
-                    return home(request)
-    return redirect('http://127.0.0.1:8000/paytm/payment/')
+                    return redirect('http://127.0.0.1:8000/paytm/payment/')
+    return home(request)
 
 
 def payment(request):

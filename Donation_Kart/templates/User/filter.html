@@ -92,7 +92,7 @@ ul {
 
   overflow: hidden;
   border: 0px solid #e7e7e7;
-  background-color: #FF8C00;
+
 }
 
 li {
@@ -246,23 +246,41 @@ input[type=number]::-webkit-inner-spin-button {
 
 
 </style>
+
+<link rel="stylesheet" href={% static "login/css/style.css" %}>
+<link rel="stylesheet" href={% static "login/css/open-iconic-bootstrap.min.css" %}>
+<link rel="stylesheet" href={% static "login/css/animate.css" %}>
+<link rel="stylesheet" href={% static "login/css/flaticon.css" %}>
+
 </head>
 <body style="background-color:#e6e6e6;">
 
-  <ul>
-    <li><a></a></li>
-  </ul>
 
-<div id="navbar" style="background-color:#f2f2f2;">
-  <a href="{% url 'User:home' %}" id="logo">Donate <i id="div1" class="fa"></i> Kart</a>
-  <div id="navbar-right">
-    <a  href="{% url 'User:home' %}"><i class="fa fa-home"></i>Home</a>
-    <a class="active" href="{% url 'User:events' %}"><i class="fa fa-globe"></i>Camps</a>
-    <a  href="{% url 'User:cart' %}"><i class="fa fa-shopping-cart"></i>Cart</a>
-    <a href="http://127.0.0.1:8080/profile"><i class="fa fa-user icon"></i>Profile</a>
-    <a href="{% url 'logout' %}"><i class="fa fa-sign-out"></i>Logout</a>
-  </div>
-</div>
+
+  <div>
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark " id="ftco-navbar">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">Donation Kart</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="oi oi-menu"></span> Menu
+        </button>
+
+        <div class="collapse navbar-collapse" id="ftco-nav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active"><a href="{% url 'User:home' %}" class="nav-link">Home</a></li>
+
+            <li class="nav-item active" ><a href="{% url 'User:events' %}" class="nav-link">Events</a></li>
+            <li class="nav-item active"><a href="{% url 'User:cart' %}" class="nav-link">Cart</a></li>
+            <li class="nav-item active"><a href="{% url 'foodtruck:foodtruck.foodrequest' %}" class="nav-link">Foodtruck</a></li>
+            <li class="nav-item active"><a href="{% url 'userlogin:userlogin.edit_profile' %}" class="nav-link">Profile</a></li>
+            <li class="nav-item active"><a href="{% url 'logout' %}" class="nav-link">Logout</a></li>
+
+
+
+          </ul>
+        </div>
+      </div>
+    </nav>
 <table style="width:100%;padding:50px 0px 50px;margin-top:300px;" >
   <tr>
     <td style="width:70%;padding:50px 100px  150px 200px">
@@ -314,8 +332,9 @@ input[type=number]::-webkit-inner-spin-button {
       <a href="{% url 'User:filter' "education" %}" style="padding:20px 10px;color:#8c8c8c;">Education</a><br>
       <a href="{% url 'User:filter' "Ngo" %}" style="padding:20px 10px;color:#8c8c8c;">Support NGOs</a><br>
       <a href="{% url 'User:filter' "desasters" %}" style="padding:20px 10px;color:#8c8c8c;">Natural Disasters</a><br>
-      <a href="#" style="padding:20px 10px;color:#8c8c8c;">Medical</a><br>
-      <a href="#" style="padding:20px 10px;color:#8c8c8c;">Blood</a><br>
+      <a href="{% url 'Blood_blog:Blog' %}" style="padding:20px 10px;color:#8c8c8c;">Blood</a><br>
+      <a href="{% url 'Blood_blog:DonationFormView' %}" style="padding:20px 10px;color:#8c8c8c;">BloodRequest</a><br>
+    
     </div>
     </td>
 <td style="width:20%"></td>

@@ -169,7 +169,7 @@ input[type=number]::-webkit-inner-spin-button {
 {% csrf_token %}
     <div class="card">
     <div style="border-bottom: 3px solid #e6e6e6;">
-    <img src="{{event.0.img.url}}" alt="pic" style="width:100%;height:250px;padding:15px 15px 15px 15px">
+<img src="{{event.0.img.url}}" alt="pic" style="width:100%;height:250px;padding:15px 15px 15px 15px">
     </div>
     <div style="border-bottom: 3px solid #e6e6e6;padding:10px 5px 10px 5px">
     <h1 style="color: #FF8C00">{{event.0.requestedorganization}}</h1>
@@ -206,13 +206,14 @@ input[type=number]::-webkit-inner-spin-button {
     <td valign="top" style="width:20%;padding:50px 10px  50px 10px">
       <h2 style="color:grey">Categories </h2><br>
       <div style="border-top: 3px solid #bfbfbf;border-bottom: 3px solid #bfbfbf;padding:30px 0px 30px">
-      <a href="{% url 'User:events' %}" style="padding:20px 10px;color:#8c8c8c;">All</a><br>
-      <a href="{% url 'User:filter' "education" %}" style="padding:20px 10px;color:#8c8c8c;">Education</a><br>
-      <a href="{% url 'User:filter' "Ngo" %}" style="padding:20px 10px;color:#8c8c8c;">Support NGOs</a><br>
-      <a href="{% url 'foodtruck:foodtruck.foodrequest' %}" style="padding:20px 10px;color:#8c8c8c;">Food</a><br>
-      <a href="{% url 'customer:personal' %}" style="padding:20px 10px;color:#8c8c8c;">Personal</a><br>
-      <a href="#" style="padding:20px 10px;color:#8c8c8c;">Blood</a><br>
-      </div><br>
+        <a href="{% url 'User:events' %}" style="padding:20px 10px;color:#8c8c8c;">All</a><br>
+        <a href="{% url 'User:filter' "education" %}" style="padding:20px 10px;color:#8c8c8c;">Education</a><br>
+        <a href="{% url 'User:filter' "Ngo" %}" style="padding:20px 10px;color:#8c8c8c;">Support NGOs</a><br>
+        <a href="{% url 'User:filter' "desasters" %}" style="padding:20px 10px;color:#8c8c8c;">Natural Disasters</a><br>
+        <a href="{% url 'customer:personal' %}" style="padding:20px 10px;color:#8c8c8c;">Medical</a><br>
+        <a href="{% url 'Blood_blog:Blog' %}" style="padding:20px 10px;color:#8c8c8c;">Blood</a><br>
+        <a href="{% url 'Blood_blog:DonationFormView' %}" style="padding:20px 10px;color:#8c8c8c;">BloodRequest</a><br>
+            </div><br>
       <h2 style="color:grey;padding:70px 0px 0px 0px;">Donor Voice </h2><br>
       <div style="border-top: 3px solid #bfbfbf;border-bottom: 3px solid #bfbfbf;padding:30px 0px 30px">
 
