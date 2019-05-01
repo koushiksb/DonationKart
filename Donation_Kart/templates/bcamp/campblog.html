@@ -1,0 +1,52 @@
+{% extends "bcamp/base.html" %}
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+{% block style %}
+  <style>
+    .jumbotron{
+      padding-top:400px;
+
+    }
+  </style>
+{% endblock %}
+
+
+{% block content %}
+  <div class="messages">
+    {% if messages %}
+      {% for message in messages %}
+        {{ message }}
+      {% endfor %}
+    {% endif %}
+  </div>
+  <table>
+    <tr>
+      <td>
+  <form method="POST">
+    {% csrf_token %}
+      {{ filter.Location| as_crispy_field }}
+      {{ filter.type| as_crispy_field }}
+  <input type="submit" name="" value="submit">
+  </form>
+  </td>
+  <div class="container">
+  <td>
+  {% for b in camp %}
+    <div class="jumbotron" style="padding:25px">
+      {{ b.CampLocation }}<br>
+      <p>{{ b.Address }}</p>
+      <div style="float:right">Start time: {{ b.CampStartTime }}<br>
+      Stop time: {{ b.CampStopTime }}</div>
+      {% if b.campstatus == "b" or b.campstatus == "c" %}
+        <a href="{% url 'bcamp:BloodCampForm' %}"><button>Register</button></a>
+      {% endif %}
+      {% if b.campstatus == "a" %}
+        <a href="#"><button>Details</button></a>
+      {% endif %}
+    </div>
+  {% endfor %}
+  </td>
+  </tr>
+  </table>
+
+{% endblock %}

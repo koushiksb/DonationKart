@@ -4,6 +4,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from django.contrib.auth.forms import AuthenticationForm
 from userlogin.models import Profile
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 def home(request):
     # Create your views here.
@@ -36,6 +37,7 @@ def user_login(request):
     print(form)
     return render(request, 'userlogin/index.html',{'form':form})
 
-def logout(request):
+@login_required
+def logoutuser(request):
     logout(request)
-    return HttpResponseRedirect(reverse(''))
+    return HttpResponseRedirect(reverse('login:login.home'))

@@ -3,6 +3,7 @@ from userlogin.forms import UserRegisterForm
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
+from django.urls import reverse
 from userlogin.models import Profile
 from .forms import UserRegisterForm, EditProfileForm, UserProfileForm
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
@@ -60,7 +61,7 @@ def signup(request):
             message = render_to_string('userlogin/acc_active_email.html', {
                 'user': new_user,
                 'domain': current_site.domain,
-                'uid':urlsafe_base64_encode(force_bytes(new_user.pk)),
+                'uid':urlsafe_base64_encode(force_bytes(new_user.pk)).decode(),
                 'token':account_activation_token.make_token(new_user),
             })
             to_email = form.cleaned_data.get('email')
@@ -82,15 +83,18 @@ def edit_profile(request):
     if request.method == 'POST':
         passform = PasswordChangeForm(request.user, request.POST)
         user_form = EditProfileForm(request.POST,instance=request.user)
+        print(user_form)
         profile_form = UserProfileForm(request.POST, request.FILES,instance=request.user.profile)
         if user_form.is_valid() and profile_form.is_valid():
+            print(user_form)
             user_form.save()
             profile_form.save()
             messages.success(request, ('Your profile was successfully updated!'))
-            return redirect('login:login.user_login')
+            return redirect('user_login:user_login.edit_profile')
         else:
             messages.error(request, ('Please correct the error below.'))
     else:
+        print('outside')
         user_form = EditProfileForm(instance=request.user)
         profile_form = UserProfileForm(instance=request.user.profile)
         passform = PasswordChangeForm(request.user, request.POST)
@@ -134,7 +138,7 @@ def activate(request, uidb64, token):
         user.profile.save()
 
         login(request, user)
-        return redirect('login.login')
+        return redirect(reverse('userlogin:userlogin.edit_profile'))
 
     else:
         return HttpResponse('Activation link is invalid!')

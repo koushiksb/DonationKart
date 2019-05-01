@@ -18,11 +18,10 @@ def foodrequest(request):
 
             data=Food.objects.create(name=name,phone_number=phone_number,pickup_address=address,city=city,country=country,pincode=pincode,user=request.user)
             data.save()
-            return redirect('login.login')
+            return redirect('User:User.events')
 
 
     else:
         foodform=foodcollectrequest()
         print(foodform)
         return render(request,'foodtruck/foodcollectrequest.html',{'form':foodform})
-

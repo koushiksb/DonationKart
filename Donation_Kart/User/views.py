@@ -1,6 +1,6 @@
 from django.core.mail import send_mail
 from django.conf import settings
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .models import Event,Events_Supported,Cart,Donation
 from userlogin.models import Profile
@@ -124,7 +124,7 @@ def proceed(request):
                     Event.objects.filter(eventid=e.eventid).update(itemsremaining=itemsremaining)
                     Cart.objects.filter(user=user).delete()
                     return home(request)
-    return cart(request)
+    return redirect('http://127.0.0.1:8000/paytm/payment/')
 
 
 def payment(request):
