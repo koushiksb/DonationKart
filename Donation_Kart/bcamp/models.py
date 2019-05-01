@@ -85,7 +85,7 @@ class NewVolunteer(models.Model):
     Vemail = models.EmailField(unique=True)
     Vphone = models.CharField(max_length=11, blank=False)
     Vstate = models.CharField(max_length=30, choices=States, default='Andhra Pradesh')
-    Vcity = models.CharField(blank=False, null=False, max_length=200, default='Hyderabad')
+    Vcity = models.CharField(blank=True, null=False, max_length=50)
     Vlocality = models.CharField(blank=False, max_length=400)
     Vhouse = models.CharField(blank=False, max_length=200)
     Vlandmark = models.CharField(blank=False, max_length=200)
@@ -94,4 +94,4 @@ class NewVolunteer(models.Model):
     Vblood = models.CharField(max_length=10, choices=Blood_Groups)
 
     def __str__(self):
-       return str(self.Vphone)       
+       return str(self.Vphone)

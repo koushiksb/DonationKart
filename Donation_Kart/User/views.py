@@ -6,10 +6,39 @@ from .models import Event,Events_Supported,Cart,Donation
 from userlogin.models import Profile
 from django.contrib.auth.decorators import login_required
 from django.db import transaction,connection
+from User.forms import EventForm
 
 @login_required(login_url='login')
 def home(request):
     return render(request,'User/home.html')
+
+@login_required
+def Raiserequest(request):
+    print('a')
+    eventform=EventForm()
+    if request.method=='POST':
+        eventform=EventForm(request.POST)
+        if eventform.is_valid():
+            print('x')
+            requestedorganization=eventform.cleaned_data.get['requestedorganization']
+            type=eventform.cleaned_data.get['type']
+            subtype=eventform.cleaned_data.get['subtype']
+            description=eventform.cleaned_data.get['description']
+            enddate=eventform.cleaned_data.get['enddate']
+            image=eventform.cleaned_data.get['img']
+            requesteditem=eventform.cleaned_data.get['requesteditem']
+            requestedquantity=eventform.cleaned_data.get['requestedquantity']
+            costperitem=eventform.cleaned_data.get['costperitem']
+            eventdata=Event.objects.create(requestedorganization=requestedorganization,type=type,subtype=subtype,description=description,enddate=enddate,image=image,requesteditem=requesteditem,requestedquantity=requestedquantity,costperitem=costperitem)
+            eventdata.save()
+            return redirect('User:home')
+        else:
+            print('y')
+            eventform=EventForm(request.POST)
+            return render(request,'User/riserequest.html',{'eventform':eventform})
+    else:
+        print('z')
+        return render(request,'User/riserequest.html',{'eventform':eventform})
 
 @login_required(login_url='login')
 def events(request):
@@ -35,9 +64,10 @@ def events(request):
         dlist.append(e[13])
         dlist.append(100-int(e[15])*100/e[14])
         dlist.append(e[14]-donated_quantity)
+        dlist.append((e[14]-donated_quantity))
         events_eme_list.append(tuple(dlist))
     events_eme_list[:12]
-    return render(request,'User/events.html',context={'eventslist':eventslist,'events':events_eme_list})
+    return render(request,'User/event2.html',context={'eventslist':eventslist,'events':events_eme_list,})
 
 
 @login_required(login_url='login')
@@ -110,7 +140,7 @@ def filter(request,id):
         dlist.append(e[14]-donated_quantity)
         events_eme_list.append(tuple(dlist))
     events_eme_list[:12]
-    return render(request,'User/filter.html',context={'events':events_eme_list})
+    return render(request,'User/event2.html',context={'events':events_eme_list})
 
 @login_required(login_url='login')
 def proceed(request):

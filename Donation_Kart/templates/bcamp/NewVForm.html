@@ -1,14 +1,83 @@
-{% extends "bcamp/base.html" %}
+{% extends "userlogin/base.html" %}
 {% load crispy_forms_tags %}
 {% load staticfiles %}
-{% block content %}
 
-<div class="container">
+{% block extrahead %}
+  <style>
+    .form-row {
+      padding:10px
+    }
+
+    .wholeform{
+      margin-left: 60px;
+      margin-top:4px;
+      width:50%;
+      border: solid #f7f7f9;
+    }
+
+    #submit{
+      border-radius:4px;
+      border:transparent;
+      background-color:#1295c9;
+      color:white;
+    }
+  </style>
+{% endblock %}
+
+{% block body %}
+<legend>Volunteer Registration form</legend><br>
+<div class="wholeform">
+  <div style="padding:10px">
   <form method="POST">
     {% csrf_token %}
-    {{Vform}}
-    <input type="submit" name="" value="submit">
-  </form>
+    <label style="padding-left:10px">Name</label>
+    <span style="padding-left:27px">{{ Vform.Vname}}</span>
+    <div class="form-row">
+      <div class="form-group col-md-6 mb-0">
+        <label>Email</label>
+        <span class="span" style="padding-left:30px">{{ Vform.Vemail }}</span>
+      </div>
+      <div class="form-group col-md-6 mb-0">
+        <label>Mobile Number</label>
+        <span>{{ Vform.Vphone }}</span>
+      </div>
+    </div>
+    <label style="padding-left:10px">House</label>
+    <span style="padding-left:25px">{{ Vform.Vhouse}}</span>
 
+    <div class="form-row">
+      <div class="form-group col-md-6 mb-0">
+        <label>LandMark</label>
+        <span>{{ Vform.Vlandmark }}</span>
+      </div>
+      <div class="form-group col-md-6 mb-0">
+        <label>Locality</label>
+        <span style="padding-left:55px">{{ Vform.Vlocality }}</span>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6 mb-0">
+        <label>City</label>
+        <span style="size:25px;padding-left:45px">{{ Vform.Vcity }}</span>
+      </div>
+      <div class="form-group col-md-6 mb-0">
+        <label>State</label>
+        <span style="padding-left:72px">{{ Vform.Vstate }}</span>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6 mb-0">
+        <label>Gender</label>
+        <span style="padding-left:19px">{{ Vform.Vgender }} </span>
+      </div>
+      <div class="form-group col-md-6 mb-0">
+        <label>Blood Group</label>
+        <span style="padding-left:20px">{{ Vform.Vblood }} </span>
+      </div>
+    </div>
+
+    <span style="padding-left:10px"><input id="submit" type="submit" name="" value="submit"></span>
+  </form>
+  </div>
 </div>
 {% endblock %}

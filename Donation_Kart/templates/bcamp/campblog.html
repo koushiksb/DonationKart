@@ -1,52 +1,89 @@
-{% extends "bcamp/base.html" %}
+{% extends "userlogin/base.html" %}
 {% load staticfiles %}
 {% load crispy_forms_tags %}
-{% block style %}
+{% block extrahead %}
   <style>
     .jumbotron{
       padding-top:400px;
 
     }
+    table {
+      width :100% ;
+      background-color:#FFFFFF
+    }
+
+
+    body{
+      background-color: #66B2FF;
+
+    }
+
+    .jumbotron{
+      border-radius:5px;
+    }
+
+    #submitbutton{
+      border-radius:5px;
+      width:95px;
+    }
+
+    .something{
+      font-size:18px;
+      border-radius:5px;
+    }
+
+    .jumbotron{
+      background-color:black;
+      opacity : 0.6;
+      color:white;
+    }
+
   </style>
 {% endblock %}
 
 
-{% block content %}
-  <div class="messages">
+{% block body %}
     {% if messages %}
+    <div class="alert alert-success">
       {% for message in messages %}
         {{ message }}
       {% endfor %}
+      </div>
     {% endif %}
-  </div>
-  <table>
-    <tr>
-      <td>
-  <form method="POST">
-    {% csrf_token %}
-      {{ filter.Location| as_crispy_field }}
-      {{ filter.type| as_crispy_field }}
-  <input type="submit" name="" value="submit">
-  </form>
-  </td>
-  <div class="container">
-  <td>
-  {% for b in camp %}
-    <div class="jumbotron" style="padding:25px">
-      {{ b.CampLocation }}<br>
-      <p>{{ b.Address }}</p>
-      <div style="float:right">Start time: {{ b.CampStartTime }}<br>
-      Stop time: {{ b.CampStopTime }}</div>
-      {% if b.campstatus == "b" or b.campstatus == "c" %}
-        <a href="{% url 'bcamp:BloodCampForm' %}"><button>Register</button></a>
-      {% endif %}
-      {% if b.campstatus == "a" %}
-        <a href="#"><button>Details</button></a>
-      {% endif %}
-    </div>
-  {% endfor %}
-  </td>
-  </tr>
+    <table>
+      <tr>
+        <div class="fixed_on_scroll" style="background-color:white">
+        <form method="POST">
+          {% csrf_token %}
+            <td style="width:500px"><div style="float:left;text-align:left;padding:4px">Location{{ filter.Location }}</div>
+            <div style="padding-top:4px;padding-left:280px">Type{{ filter.type }}</div></td>
+            <td style="width:400px"><div style="float:left;text-align:justify"><input type="submit" id="submitbutton" name="" value="submit" ></div></td>
+            <td style="width:450px"><span> Want to be a Volunteer<br><a href="#">Register here</a></span></td>
+        </form>
+        </div>
+      <tr>
+    </table>
+
+      <div class="container">
+
+        {% for b in camp %}
+          <div class="jumbotron " style="padding:25px">
+            {{ b.CampLocation }}<br>
+            <p>{{ b.Address }}</p>
+            <div style="float:right">Start time: {{ b.CampStartTime }}<br>
+            Stop time: {{ b.CampStopTime }}</div>
+            {% if b.campstatus == "b" or b.campstatus == "c" %}
+              <a href="{% url 'bcamp:BloodCampForm' %}"><button>Register</button></a>
+            {% endif %}
+            {% if b.campstatus == "a" %}
+              <a href="#"><button class="something">Details</button></a>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+
+
+
   </table>
 
 {% endblock %}

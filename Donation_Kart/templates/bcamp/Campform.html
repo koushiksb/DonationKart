@@ -1,12 +1,22 @@
-{% extends "bcamp/base.html" %}
+{% extends "userlogin/base.html" %}
 {% load crispy_forms_tags %}
 {% load staticfiles %}
-{% block content %}
-<div class="container">
+{% block body %}
+<div class="form container">
   <form method="POST">
     {% csrf_token %}
+      <div class="form-group">
+        <label for ="FirstName">First Name</label>
+        <span class="form-control">{{ form.FirstName }}</span>
+      </div>
+      {{ form.LastName | as_crispy_field }}
+      {{ form.DonorAge | as_crispy_field }}
+      {{ form.DonorMobile | as_crispy_field }}
+      {{ form.DonorLocality | as_crispy_field }}
+      {{ form.DonorBgrp | as_crispy_field }}
+      {{ form.Donoremail | as_crispy_field }}
+      {{ form.DonorGender | as_crispy_field }}
 
-      {{form}}
   <input type="submit" name="" value="submit">
   </form></div>
 {% endblock %}
