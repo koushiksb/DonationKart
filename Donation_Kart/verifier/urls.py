@@ -11,4 +11,6 @@ urlpatterns=[
     path('req_cancel/(?P<pk>\d+)/', views.req_cancel, name='req_cancel'),
     path('req2_verify/(?P<pk>\d+)/', views.req2_verify, name='req2_verify'),
     path('req2_cancel/(?P<pk>\d+)/', views.req2_cancel, name='req2_cancel'),
+    #path('eventsverify/', views.verifyevents, name='verifyevents'),
+    path('verifyevent/', views.verifyevent, name='verifyevent'),
 ]

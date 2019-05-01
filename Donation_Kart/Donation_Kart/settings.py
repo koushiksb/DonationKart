@@ -97,9 +97,9 @@ WSGI_APPLICATION = 'Donation_Kart.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME':'Donation_Kart',
+        'NAME':'donatekart',
         'USER':'root',
-        'PASSWORD':'proxyerror',
+        'PASSWORD':'myclan#2',
         'HOST':'localhost',
         'PORT':'',
     }

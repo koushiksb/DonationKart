@@ -34,6 +34,7 @@
             <br>
             <a id="b1" href="#">New Requests</a>
             <a id="b2" href="#">Pending Requests</a>
+            <a id="b4" href="#">Pending Events</a>
             <a id="b3" href="#">Relif Funds</a>
             <a href="#">My Actions</a>
             <a href="#">Profile</a>
@@ -196,6 +197,24 @@
                 </div>
               </div>
             </div>
+            {% if events %}
+              {% for event in events %}
+                <form method="POST" action="{% url 'User:verifyevent' %}">
+                {% csrf_token %}
+                <div class="divs pre" style="display:none">
+                  <div class="card" style="width: 20rem; height:480px;">
+                    <img src="/media/{{ event.imZg }}" class="card-img-top" style="width:100%;height:250px;" alt="ERROR!">
+                    <div class="card-body"><h1>{{e.requestedorganization}}</h1>
+                    <h3>{{e.requesteddate}} :  {{e.description}}</h3>
+                    <h3>Requested Items  :  {{e.requesteditem}}</h3>
+                    <input type="number" name="eventid" value={{e.eventid}} style="display:none">
+                    <button type="submit" >Verify</button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+              {% endfor %}
+            {% endif %}
           </div>
         </div>
       </div>
@@ -236,16 +255,17 @@
       var b1=document.getElementById('b1');
       var b2=document.getElementById('b2');
       var b3=document.getElementById('b3');
+      var b4=document.getElementById('b4')
       var nr=document.getElementsByClassName('nr');
       var pr=document.getElementsByClassName('pr');
       var rf=document.getElementById('rf')
+      var pre = document.getElementsByClassName('pre')
 
       window.onload=function(){
         b1.onclick=function(){
           b1.disabled=true;
           for(var i =0;i<nr.length;i++){
             nr[i].style.display="inline-block";
-
           }
           b2.disabled=false;
           for(var i =0;i<pr.length;i++){
@@ -253,6 +273,10 @@
           }
           b3.disabled=false;
           rf.style.display="none";
+          for(var i=o;i<pre.length;i++){
+            pre.style.display="none";
+          }
+          b4.disabled=false;
         }
         b2.onclick=function(){
           b2.disabled=true;
@@ -265,6 +289,10 @@
           }
           b3.disabled=false;
           rf.style.display="none";
+          b4.disabled=false;
+          for(var i=o;i<pre.length;i++){
+            pre.style.display="none";
+          }
         }
         b3.onclick=function(){
           b2.disabled=false;
@@ -277,6 +305,26 @@
           }
           b3.disabled=true;
           rf.style.display="block";
+          b4.disabled=false;
+          for(var i=o;i<pre.length;i++){
+            pre.style.display="none";
+          }
+        }
+        b4.onclick=function(){
+          b2.disabled=false;
+          for(var i =0;i<pr.length;i++){
+            pr[i].style.display="none";
+          }
+          b1.disabled=false;
+          for(var i =0;i<nr.length;i++){
+            nr[i].style.display="none";
+          }
+          b3.disabled=false;
+          rf.style.display="none";
+          b4.disabled=true;
+          for(var i=o;i<pre.length;i++){
+            pre.style.display="block";
+          }
         }
         b1.disabled=true;
       }

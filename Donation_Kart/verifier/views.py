@@ -13,6 +13,7 @@ from datetime import datetime
 from django.forms import modelformset_factory
 from django.contrib import messages
 from funds.models import funds
+from User.models import Event
 
 @login_required
 def req_appoint(request, pk):
@@ -80,9 +81,17 @@ def home(request):
     ImageFormSet = modelformset_factory(Images,form=imgform, extra=5)
     formset = ImageFormSet(queryset=Images.objects.none())
     fund = funds.objects.all().order_by('started_on')
-    return render(request, 'admin/home.html', {'user': current_user, 'c':cuser, 'requests':new_requests, 'request2':pend_req, 'form':form, 'formset':formset, 'funds':fund})
+    events=Event.objects.filter(verifierassigned=current_user)
+    return render(request, 'admin/home.html', {'user': current_user, 'c':cuser, 'requests':new_requests, 'request2':pend_req, 'form':form, 'formset':formset, 'funds':fund,'events':events})
 
 @login_required
 def logout_view(request):
     logout(request)
     return HttpResponseRedirect(reverse('basic'))
+
+
+@login_required
+def verifyevent(request):
+    eventid=request.POST["eventid"]
+    Event.objects.filter(eventid=eventid).update(verified=True)
+    return home(request)

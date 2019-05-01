@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import MinValueValidator
 from django.contrib.auth.models import User
+from User.models import Event
 
 # class UserProfile(models.Model):
 #     prof = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -28,3 +29,7 @@ class pending_request(models.Model):
 
     def __str__(self):
         return self.request_header
+
+class pending_events(models.Model):
+    appointed_by = models.CharField(max_length=255)
+    event =models.ForeignKey(Event, on_delete=models.CASCADE)
