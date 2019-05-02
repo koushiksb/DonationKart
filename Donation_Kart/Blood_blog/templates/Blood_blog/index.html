@@ -6,131 +6,226 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
-    <title>Collapsible sidebar using Bootstrap 4</title>
-
-    <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-    <!-- Our Custom CSS -->
     <link rel="stylesheet" href='{% static  "Blood_blog/css/style3.css" %}'>
-    <!-- Scrollbar Custom CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
-
-    <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
 
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300, 400,700" rel="stylesheet">
+
+  <!--  <link rel="stylesheet" href='{% static  "Blood_blog/css/bootstrap.css" %}'>-->
+    <link rel="stylesheet" href="{% static 'Blood_blog/css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'Blood_blog/fonts/ionicons/css/ionicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'Blood_blog/fonts/fontawesome/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'Blood_blog/fonts/flaticon/font/flaticon.css' %}">
+
+    <link rel="stylesheet" href="{% static 'Blood_blog/css/style.css' %}">
+    <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    /* Add a gray background color with some padding */
+    body {
+      font-family: Arial;
+      padding: 20px;
+      background: #f1f1f1;
+    }
+
+    /* Header/Blog Title */
+    .header {
+      padding: 30px;
+      font-size: 40px;
+      text-align: center;
+      background: white;
+    }
+
+    /* Create two unequal columns that floats next to each other */
+    /* Left column */
+    .leftcolumn {
+      float: left;
+      width: 75%;
+    }
+
+    /* Right column */
+    .rightcolumn {
+      float: left;
+      width: 25%;
+      padding-left: 20px;
+    }
+
+    /* Fake image */
+    .fakeimg {
+      background-color: #aaa;
+      width: 100%;
+      padding: 20px;
+    }
+
+    /* Add a card effect for articles */
+    .card {
+       background-color: white;
+       padding: 20px;
+       margin-top: 20px;
+    }
+
+    /* Clear floats after the columns */
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    /* Footer */
+    .footer {
+      padding: 20px;
+      text-align: center;
+      background: #ddd;
+      margin-top: 20px;
+    }
+
+    /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+    @media screen and (max-width: 800px) {
+      .leftcolumn, .rightcolumn {
+        width: 100%;
+        padding: 0;
+      }
+    }
+    </style>
 </head>
 
-<body>
+<body style="background-color:FE6F6F">
+  <br><br>
+  <div class="container" style="width:1275px !important">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+      </ol>
 
-    <div class="wrapper">
-        <!-- Sidebar  -->
-        <nav id="sidebar">
-            <div id="dismiss">
-                <i class="fas fa-arrow-left"></i>
-            </div>
-
-            <div class="sidebar-header">
-                <h3>Bootstrap Sidebar</h3>
-            </div>
-
-            <ul class="list-unstyled components">
-                <p>Dummy Heading</p>
-                <li class="active">
-                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Home</a>
-                    <ul class="collapse list-unstyled" id="homeSubmenu">
-                        <li>
-                            <a href="#">Home 1</a>
-                        </li>
-                        <li>
-                            <a href="#">Home 2</a>
-                        </li>
-                        <li>
-                            <a href="#">Home 3</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">About</a>
-                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Pages</a>
-                    <ul class="collapse list-unstyled" id="pageSubmenu">
-                        <li>
-                            <a href="#">Page 1</a>
-                        </li>
-                        <li>
-                            <a href="#">Page 2</a>
-                        </li>
-                        <li>
-                            <a href="#">Page 3</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">Portfolio</a>
-                </li>
-                <li>
-                    <a href="#">Contact</a>
-                </li>
-            </ul>
-
-            <ul class="list-unstyled CTAs">
-                <li>
-                    <a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a>
-                </li>
-                <li>
-                    <a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a>
-                </li>
-            </ul>
-        </nav>
-
-        <!-- Page Content  -->
-        <div id="content">
-
-                <div class="container-fluid">
-
-                    <button type="button" id="sidebarCollapse" class="btn btn-info">
-                        <i class="fas fa-align-left"></i>
-                        <span>Toggle Sidebar</span>
-                    </button>
-                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <i class="fas fa-align-justify"></i>
-                    </button>
-
-                </div>
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner">
+        <div class="item active">
+          <img src="{% static 'Blood_blog/images/bb3.jpeg' %}" alt="Los Angeles" style="width:2200px;height:550px">
         </div>
+
+        <div class="item">
+          <img src="{% static 'Blood_blog/images/bb2.jpeg' %}" alt="Chicago" style="width:2200px;height:550px">
+        </div>
+
+        <div class="item">
+          <img src="{% static 'Blood_blog/images/bb1.png' %}" alt="New york" style="width:2200px;height:550px">
+        </div>
+      </div>
+
+      <!-- Left and right controls -->
     </div>
+  </div>
+  <br><br><br>
+  {% for blog in blogs %}
+  <div class="leftcolumn">
+  <div class="container" style="width:700px !important">
+  <div class="sidebar-box">
+     <h3 class="heading"><span style="font-size:40px">{{ blog.Patient_name }}</span></h3>
+     <button class="btn btn-link" type="button" data-toggle="modal" data-target="#myModal"><p style="font-size:30px">{{ blog.reason }}</p></button>
+     <div class="post-entry-sidebar">
+       <ul>
+         <li>
+           <a href="">
+             <img src="/media/{{ blog.img }}" alt="ERROR!" style="width:100%" class="mr-4">
+             <div class="text">
+               <h4></h4>
+               <div class="post-meta">
+                 <span class="mr-2" style="font-size:30px">{{ blog.date }} </span> &bullet;
+                 <span class="ml-2" style="font-size:30px"><span class="fa fa-comments"></span> 3</span>
+               </div>
+             </div>
+           </a>
+         </li>
+       </ul>
+     </div>
+   </div>
+ </div>
+</div>
+ <div class="modal fade" id="myModal" role="dialog">
+ <div class="modal-dialog">
+   <div class="modal-content" style="margin-left: -30%;width:150%;font-family: 'Open Sans',sans-serif;">
+     <div class="modal-header">
+       <h4 class="modal-title" style="font-family: 'Open Sans',sans-serif;margin-left: 0%;">Detailed View</h4>
+       <button type="button" class="close" data-dismiss="modal">&times;</button>
+     </div>
+     <div class="modal-body">
+       <div class="row">
+         <div class="col-6">
+           <img src="/media/{{ blog.img }}" alt="ERROR!" style="width:100%;">
+         </div>
+         <div class="col-6">
+           <ul style="list-style-type:none;">
+             <li>Patient Name : {{ blog.Patient_name }}</li>
+             <li>Blood : {{ blog.blood }}</li>
+             <li>Ph Number : {{ blog.phone_number }}</li>
+             <li>State : {{ blog.state }}</li>
+           </ul>
+         </div>
+       </div>
+       <div class="row">
+         <div class="col-12">
+           <p style="text-align:justify;">{{ blog.reason }}</p>
+           <p>Amount : {{ blog.Amount_blood }}</p>
+           <p style="float:right;">By : {{ blog.date }}</p>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+</div>
+<br><br><br>
+{% endfor %}
 
-    <div class="overlay"></div>
+<div class="rightcolumn">
+  <div class="card">
+    <h2>About Us</h2>
+    <img src="/media/{{ blog.img }}" alt="ERROR!" style="width:100%;">
+    <p>We are a not for profit health awareness and health guidance community, which aims at saving lives of people, and connecting rural areas, reducing road accidents, monitoring their health trends everything with the help of technology.</p>
+  </div>
+  <div class="card">
+    <h3>Popular Post</h3>
+    {% for blog1 in blogs1 %}
+    <img src="/media/{{ blog.img }}" alt="ERROR!" style="width:100%;"><br>
+    {% endfor %}
+  </div>
+  <div class="card">
+    <h3>Follow Me</h3>
+    <li><a href="#"><span class="fa fa-twitter"></span> Twitter</a></li>
+    <li><a href="#"><span class="fa fa-facebook"></span> Facebook</a></li>
+    <li><a href="#"><span class="fa fa-instagram"></span> Instagram</a></li>
+    <li><a href="#"><span class="fa fa-vimeo"></span> Vimeo</a></li>
+    <li><a href="#"><span class="fa fa-youtube-play"></span> Youtube</a></li>
+    <li><a href="#"><span class="fa fa-snapchat"></span> Snapshot</a></li>
+  </div>
+</div>
 
-    <!-- jQuery CDN - Slim version (=without AJAX) -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <!-- Popper.JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
-    <!-- Bootstrap JS -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-    <!-- jQuery Custom Scroller CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("#sidebar").mCustomScrollbar({
-                theme: "minimal"
-            });
 
-            $('#dismiss, .overlay').on('click', function () {
-                $('#sidebar').removeClass('active');
-                $('.overlay').removeClass('active');
-            });
+      <script src = '{% static "Blood_blog/js/bootstrap.min.js"%}'></script>
+      <script src = '{% static "Blood_blog/js/jquery-3.2.1.min.js"%}'></script>
+      <script src = '{% static "Blood_blog/js/jquery-migrate-3.0.0.js" %}'></script>
+      <script src = '{% static "Blood_blog/js/popper.min.js" %}'></script>
+      <script src = '{% static "Blood_blog/js/owl.carousel.min.js" %}'></script>
+      <script src = '{% static "Blood_blog/js/jquery.waypoints.min.js" %}'></script>
+      <script src = '{% static "Blood_blog/js/main.js" %}'></script>
+      <script src = '{% static "Blood_blog/js/jquery.stellar.min.js" %}'></script>
 
-            $('#sidebarCollapse').on('click', function () {
-                $('#sidebar').addClass('active');
-                $('.overlay').addClass('active');
-                $('.collapse.in').toggleClass('in');
-                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
-            });
-        });
-    </script>
-</body>
+    </body>
 
 </html>

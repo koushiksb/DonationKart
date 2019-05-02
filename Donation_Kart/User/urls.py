@@ -14,4 +14,5 @@ urlpatterns = [
     path('delete/<id>',views.delete,name="delete"),
     path('events/<id>',views.filter,name="filter"),
     path('Raiserequest/',views.Raiserequest,name="Raiserequest"),
+    path('natdis/',views.natdis,name="natdis")
 ]

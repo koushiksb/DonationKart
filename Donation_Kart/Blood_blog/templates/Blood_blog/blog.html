@@ -29,37 +29,79 @@
   <link rel="stylesheet" href="{% static 'Blood_blog/fonts/flaticon/font/flaticon.css' %}">
 
   <link rel="stylesheet" href="{% static 'Blood_blog/css/style.css' %}">
+  <style>
+  * {
+    box-sizing: border-box;
+  }
 
-  <link rel="stylesheet" href={% static "login/css/style.css" %}>
-  <link rel="stylesheet" href={% static "login/css/open-iconic-bootstrap.min.css" %}>
-  <link rel="stylesheet" href={% static "login/css/animate.css" %}>
-  <link rel="stylesheet" href={% static "login/css/flaticon.css" %}>
+  /* Add a gray background color with some padding */
+  body {
+    font-family: Arial;
+    padding: 20px;
+    background: #f1f1f1;
+  }
 
+  /* Header/Blog Title */
+  .header {
+    padding: 30px;
+    font-size: 40px;
+    text-align: center;
+    background: white;
+  }
+
+  /* Create two unequal columns that floats next to each other */
+  /* Left column */
+  .leftcolumn {
+    float: left;
+    width: 75%;
+  }
+
+  /* Right column */
+  .rightcolumn {
+    float: left;
+    width: 25%;
+    padding-left: 20px;
+  }
+
+  /* Fake image */
+  .fakeimg {
+    background-color: #aaa;
+    width: 100%;
+    padding: 20px;
+  }
+
+  /* Add a card effect for articles */
+  .card {
+     background-color: white;
+     padding: 20px;
+     margin-top: 20px;
+  }
+
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  /* Footer */
+  .footer {
+    padding: 20px;
+    text-align: center;
+    background: #ddd;
+    margin-top: 20px;
+  }
+
+  /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+  @media screen and (max-width: 800px) {
+    .leftcolumn, .rightcolumn {
+      width: 100%;
+      padding: 0;
+    }
+  }
+  </style>  
 </head>
 <body>
-  <div>
-    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark " id="ftco-navbar">
-      <div class="container">
-        <a class="navbar-brand" href="index.html">Donation Kart</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="oi oi-menu"></span> Menu
-        </button>
-
-        <div class="collapse navbar-collapse" id="ftco-nav">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item active"><a href="{% url 'User:home' %}" class="nav-link">Home</a></li>
-
-            <li class="nav-item active" ><a href="{% url 'User:events' %}" class="nav-link">Events</a></li>
-            <li class="nav-item active"><a href="{% url 'User:cart' %}" class="nav-link">Cart</a></li>
-            <li class="nav-item active"><a href="{% url 'foodtruck:foodtruck.foodrequest' %}" class="nav-link">Foodtruck</a></li>
-            <li class="nav-item active"><a href="{% url 'userlogin:userlogin.edit_profile' %}" class="nav-link">Profile</a></li>
-            <li class="nav-item active"><a href="{% url 'logout' %}" class="nav-link">Logout</a></li>
-
-
-          </ul>
-        </div>
-      </div>
-    </nav>
   <br><br><br>
   <div class="container" style="width:1275px !important">
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -245,17 +287,32 @@
 
   <br><br><br>
   {% for blog in blogs %}
-    <center><div class="jumbotron" style = "padding-top:13px !important;width:75% !important">
+    <center>
+      <div class="jumbotron" style = "padding-top:13px !important;width:75% !important">
       <div class="media-body">
-        <div class="article-metadata">
-
+        <div class="row">
+          <div class="col-3">
+              <a class="mr-2" href="#">{{ blog.Patient_name }}</a>
+          </div>
+          <div class="col-3">
+              <small class="text-muted">{{ blog.blood }}</small>
+          </div>
+          <div class="col-3">
+              <button class="btn btn-link" type="button" data-toggle="modal" data-target="#myModal">{{ blog.phone_number }}</button>
+          </div>
+          <div class="col-3">
+            <p class="article-content">{{ blog.Amount_blood }} ltrs</p>
+          </div>
+        </div>
+        <!-- <div class="article-metadata">
           <a class="mr-2" href="#">{{ blog.Patient_name }}</a>
           <small class="text-muted">{{ blog.blood }}</small>
         </div>
-        <h2><button class="article-title btn btn-link btn-lg" type="button" data-toggle="modal" data-target="#myModal">{{ blog.phone_number }}</button></h2>
-        <p class="article-content">{{ blog.Amount_blood }} ltrs</p>
+          <h2><button class="article-title btn btn-link btn-lg" type="button" data-toggle="modal" data-target="#myModal">{{ blog.phone_number }}</button></h2>
+          <p class="article-content">{{ blog.Amount_blood }} ltrs</p>
+        </div> -->
       </div>
-    </div></center>
+    </center>
     <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
       <div class="modal-content" style="margin-left: -30%;width:150%;font-family: 'Open Sans',sans-serif;">
@@ -290,77 +347,6 @@
   </div>
   {% endfor %}
 
-  <footer class="site-footer">
-    <div class="container">
-      <div class="row mb-5">
-        <div class="col-md-4">
-          <h3>Paragraph</h3>
-          <p>
-            <img src="{% static 'Blood_blog/images/img_1.jpg' %}" alt="Image placeholder" class="img-fluid" style="width:400px;height:200px">
-          </p>
-
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi, accusantium optio unde perferendis eum illum voluptatibus dolore tempora, consequatur minus asperiores temporibus reprehenderit.</p>
-        </div>
-        <div class="col-md-6 ml-auto">
-          <div class="row">
-            <div class="col-md-7">
-              <h3>Latest Post</h3>
-              <div class="post-entry-sidebar">
-                <ul>
-                  <li>
-                    <a href="">
-                      <img src="{% static 'Blood_blog/images/img_1.jpg' %}" alt="Image placeholder" class="mr-4">
-                      <div class="text">
-                        <h4>There’s a Cool New Way for Men to Wear Socks and Sandals</h4>
-                        <div class="post-meta">
-                            <span class="mr-2">March 15, 2018 </span> &bullet;
-                          <span class="ml-2"><span class="fa fa-comments"></span> 3</span>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-md-1"></div>
-
-            <div class="col-md-4">
-
-              <div class="mb-5">
-                <h3>Quick Links</h3>
-                <ul class="list-unstyled">
-                  <li><a href="#">About Us</a></li>
-                  <li><a href="#">Travel</a></li>
-                  <li><a href="#">Adventure</a></li>
-                  <li><a href="#">Courses</a></li>
-                  <li><a href="#">Categories</a></li>
-                </ul>
-              </div>
-
-              <div class="mb-5">
-                <h3>Social</h3>
-                <ul class="list-unstyled footer-social">
-                  <li><a href="#"><span class="fa fa-twitter"></span> Twitter</a></li>
-                  <li><a href="#"><span class="fa fa-facebook"></span> Facebook</a></li>
-                  <li><a href="#"><span class="fa fa-instagram"></span> Instagram</a></li>
-                  <li><a href="#"><span class="fa fa-vimeo"></span> Vimeo</a></li>
-                  <li><a href="#"><span class="fa fa-youtube-play"></span> Youtube</a></li>
-                  <li><a href="#"><span class="fa fa-snapchat"></span> Snapshot</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-        </div>
-      </div>
-    </div>
-  </footer>
   <div class="overlay"></div>
 
 

@@ -18,7 +18,13 @@ def Blog(request):
     return render(request,'Blood_blog/blog.html',dicts)
 
 def Blog2(request):
-    return render(request,'Blood_blog/index.html')
+    blogs = Donate_blood.objects.raw('''select id,Patient_name,phone_number,blood,Amount_blood,date from Blood_blog_donate_blood''')
+    blogs1= Donate_blood.objects.raw('''select id,Patient_name,phone_number,blood,Amount_blood,date from Blood_blog_donate_blood order by date limit 3''')
+    dicts = {
+        'blogs' : blogs,
+        'blogs1' : blogs1
+    }
+    return render(request,'Blood_blog/index.html',dicts)
 
 @login_required
 def detail(request,pk):

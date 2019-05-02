@@ -10,6 +10,7 @@
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -146,10 +147,61 @@ input[type=number]::-webkit-inner-spin-button {
 </style>
 {% endblock %}
 </head>
-<body style="background-color:#e6e6e6;">
-  {% block body %}
+{% block body %}
+<body >
+  <div class="container-fluid" style="color:black">
+    <br>
+    <h3 style="text-align:center;">{{request.user}}'s CART</h3>
+    <br>
+    <div class="row">
+        <div class="col-9">
+          <br>
+              {% for c in cartlist %}
+              <div class="row" style="background:white;margin-left:10px;height:200px;width:100%; box-shadow: 5px 10px 18px #888888;padding-bottom:1%;padding-top:1%;">
+                <div class="col-3">
+                  <img src="{{c.1.img.url}}" alt="pic" style="width:100%;">
+                </div>
+                <div class="col-8"   >
+                  <br>
+                  <table style="width:100%;margin-left:6%;padding:20px;font-size:20px" class="table borderless">
+                    <tr>
+                    <th>
+                      Name
+                      </th>
+                      <th>Item</th>
+                      <th>Cost</th>
+                      <th>Quantity</th>
+                      <th>Total</th>
+                      </tr>
+                      <tr >
+                        <td>{{c.1.requestedorganization}}</td>
+                        <td>{{c.1.requesteditem}}</td>
+                        <td>{{c.1.costperitem}}</td>
+                        <td>{{c.0.Quantity}}</td>
+                        <td>{{c.0.amount}}</td>
 
-<table style="width:100%;padding:50px 0px 50px;margin-top:300px;" >
+                      </tr>
+                      </table>
+                </div>
+                <div class="col-1" >
+                  <a href="{% url 'User:delete' c.1.eventid %}"  class="remove-item" style="margin-top:30%;margin-left:25%;background-color:rgba(0,0,0,0)"><i  class="fa fa-times-circle-o"></i></a>
+                </div>
+              </div>
+              {% endfor %}
+        </div>
+        <div class="col-3">
+          <div class="container" style="margin-top:6%;width:100%;box-shadow:10px 8px 18px #888888">
+          <ul style="color:black;margin-left:10%;list-style-type:none;font-size:18px">
+            <br>
+            <li>Total Items In Cart : {{count}} </li>
+            <li>Net Amount          : {{cartcost}} Rs/-</li><br>
+            <li><a type="button" href="{% url 'User:proceed' %}" class="btn btn-warning"><i>Proceed To Payment</i></a></li>
+          </ul>
+          </div>
+        </div>
+    </div>
+  </div>
+<!-- <table style="width:100%;padding:50px 0px 50px;margin-top:300px;" >
   <tr>
     <td style="width:70%;padding:50px 100px  150px 200px;top: 0;" valign="top">
 
@@ -207,7 +259,7 @@ input[type=number]::-webkit-inner-spin-button {
     </td>
 
   </tr>
-</table>
+</table> -->
 <!-- <div style="margin-top:210px;padding:15px 15px 2500px;font-size:30px"></div> -->
 
 <script>
@@ -242,6 +294,6 @@ function hourglass() {
 hourglass();
 setInterval(hourglass, 3000);
 </script>
-{% endblock %}
 </body>
+{% endblock %}
 </html>

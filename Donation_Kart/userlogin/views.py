@@ -99,16 +99,13 @@ def edit_profile(request):
         profile_form = UserProfileForm(instance=request.user.profile)
         passform = PasswordChangeForm(request.user, request.POST)
 
-
-
-
     return render(request, 'userlogin/profile_edit2.html', {
-        'user_form': user_form,
-        'profile_form': profile_form,
-        'passform':passform,
-        'user':request.user
-    })
-
+            'user_form': user_form,
+            'profile_form': profile_form,
+            'passform':passform,
+            'user':request.user
+        })
+        
 def change_password(request):
     if request.method == 'POST':
         form = PasswordChangeForm(request.user, request.POST)
@@ -121,6 +118,7 @@ def change_password(request):
             messages.error(request, 'Please correct the error below.')
     else:
         form = PasswordChangeForm(request.user)
+
     return render(request, 'userlogin/change_password.html', {
         'form': form
     })

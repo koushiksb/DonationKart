@@ -494,9 +494,9 @@ input {
   width: 100%;
   display: table;
 }
-
+/* ../images/bg-heading-03.jpg */
 .card-3 .card-heading {
-  background: url("../images/bg-heading-03.jpg") top left/cover no-repeat;
+  background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFL6lPgZnSYL29jryUJ9vc5xePO-w2nsucdbCDSULFcaNokRep0A") top left/cover no-repeat;
   display: table-cell;
   width: 50%;
 }

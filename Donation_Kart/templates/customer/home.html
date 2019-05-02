@@ -17,11 +17,11 @@
   {% block body %}
   <body style="background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('https://www.experto.de/wp-content/uploads/2019/02/AdobeStock_203485926.jpeg'); background-size:cover;">
 
-    <br><br><br><br>
-    <div class="row">
+    <br><br>
+    <div class="row" style="width:100%;">
       <div class="col-4"></div>
       <div class="col-5" style="margin-left:-2%;">
-        <form method="POST" style="padding-bottom: 10%;color:#555555;padding:7%;border:1px solid #777777; border-radius:1.5%;background-color:rgba(255,255,255,0.4);">
+        <form method="POST" style="padding-bottom: 10%;color:#555555;padding:7%;border:1px solid #777777; border-radius:1.5%;background-color:rgba(255,255,255,0.7);">
           {% csrf_token %}
           <center><h1>RAISE FUND</h1></center>
           <br>
@@ -79,8 +79,8 @@
           <tbody>
             {% for a in x %}
               <tr>
-                <td><a style="text-decoration:none;color:#33ba27;font-size:18px;" href="{% url 'forum:home_with_pk' pk=a.pk %}">{{ a.request_header }}</a></td>
-                <td><a style="text-decoration:none;color:#33ba27;font-size:18px;" href="{% url 'forum:home_with_pk' pk=a.pk %}">{{ a.by_date }}</a></td>
+                <td><a style="text-decoration:none;color:#fc8a00;font-size:18px;" href="{% url 'forum:home_with_pk' pk=a.pk %}">{{ a.request_header }}</a></td>
+                <td><a style="text-decoration:none;color:#fc8a00;font-size:18px;" href="{% url 'forum:home_with_pk' pk=a.pk %}">{{ a.by_date }}</a></td>
               </tr>
             {% endfor %}
           </tbody>

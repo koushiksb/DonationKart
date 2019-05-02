@@ -12,6 +12,18 @@ class NewVolunteerForm(forms.ModelForm):
     class Meta:
         model=NewVolunteer
         fields='__all__'
+        labels={
+                'Vname':'Name',
+                'Vemail':'Email',
+                'Vphone':'Mobile Number',
+                'Vhouse':'House',
+                'Vlandmark':'Landmark',
+                'Vlocality':'Locality',
+                'Vcity':'City',
+                'Vstate':'State',
+                'Vgender':'Gender',
+                'Vblood':'Blood group',
+        }
 
 
 class FilterForm(forms.Form):

@@ -6,9 +6,9 @@ class EventForm(forms.ModelForm):
         model = Event
         exclude = ['eventid','verifierassigned','status','verified','deliverd','requesteddate','itemsremaining']
         CHOICES = (('',("Select Type")),('1',("education")),('2',("NGO")),('3',("desasters")),)
-        SUB = (('',("Select Subtype")),('1',("books")),('2',("money")),)
+        SUB = (('',("Select Subtype")),('1',("stationary")),('2',("support")),)
 
-        
+
 
         labels = {
             'requestedorganization':'',

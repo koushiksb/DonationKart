@@ -14,17 +14,17 @@
             $(".timer").html(time)
             if(time == 0)
             {
-                window.location.href = 'http://127.0.0.1:8000/User/home'
+                window.location.href = 'http://127.0.0.1:8000/BloodRequest/home'
             }
             time--;
           }
           redirect()
         });
       </script>
-    <center><img src="{% static "images/7YUz.gif" %}" width="80px" height = "80px"></center>
+    <center><img src="{% static "Blood_blog/images/loader.gif" %}" width="80px" height = "80px"></center>
 
    <center>  <h1>
-     Thankyou for using our service.<br>You'll be directed to our Home page in
+     Thankyou for filling the form.<br>You'll be directed to our blog in
      <span class = "timer">0</span> seconds</h1></center><br><br><br>
       <br><br><br><br>
 {% endblock %}

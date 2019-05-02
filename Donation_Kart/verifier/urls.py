@@ -1,6 +1,7 @@
 from django.conf.urls import url
 from django.urls import path
 from . import views
+from userlogin import views as prof
 
 app_name='admin_login'
 
@@ -13,4 +14,5 @@ urlpatterns=[
     path('req2_cancel/(?P<pk>\d+)/', views.req2_cancel, name='req2_cancel'),
     #path('eventsverify/', views.verifyevents, name='verifyevents'),
     path('verifyevent/', views.verifyevent, name='verifyevent'),
+    path('prof/', prof.edit_profile, name="profile")
 ]

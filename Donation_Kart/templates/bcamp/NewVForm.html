@@ -3,6 +3,7 @@
 {% load staticfiles %}
 
 {% block extrahead %}
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <style>
     .form-row {
       padding:10px
@@ -15,69 +16,58 @@
       border: solid #f7f7f9;
     }
 
-    #submit{
-      border-radius:4px;
-      border:transparent;
-      background-color:#1295c9;
-      color:white;
-    }
   </style>
 {% endblock %}
 
 {% block body %}
-<legend>Volunteer Registration form</legend><br>
-<div class="wholeform">
-  <div style="padding:10px">
-  <form method="POST">
-    {% csrf_token %}
-    <label style="padding-left:10px">Name</label>
-    <span style="padding-left:27px">{{ Vform.Vname}}</span>
-    <div class="form-row">
-      <div class="form-group col-md-6 mb-0">
-        <label>Email</label>
-        <span class="span" style="padding-left:30px">{{ Vform.Vemail }}</span>
-      </div>
-      <div class="form-group col-md-6 mb-0">
-        <label>Mobile Number</label>
-        <span>{{ Vform.Vphone }}</span>
-      </div>
-    </div>
-    <label style="padding-left:10px">House</label>
-    <span style="padding-left:25px">{{ Vform.Vhouse}}</span>
-
-    <div class="form-row">
-      <div class="form-group col-md-6 mb-0">
-        <label>LandMark</label>
-        <span>{{ Vform.Vlandmark }}</span>
-      </div>
-      <div class="form-group col-md-6 mb-0">
-        <label>Locality</label>
-        <span style="padding-left:55px">{{ Vform.Vlocality }}</span>
-      </div>
-    </div>
-    <div class="form-row">
-      <div class="form-group col-md-6 mb-0">
-        <label>City</label>
-        <span style="size:25px;padding-left:45px">{{ Vform.Vcity }}</span>
-      </div>
-      <div class="form-group col-md-6 mb-0">
-        <label>State</label>
-        <span style="padding-left:72px">{{ Vform.Vstate }}</span>
-      </div>
-    </div>
-    <div class="form-row">
-      <div class="form-group col-md-6 mb-0">
-        <label>Gender</label>
-        <span style="padding-left:19px">{{ Vform.Vgender }} </span>
-      </div>
-      <div class="form-group col-md-6 mb-0">
-        <label>Blood Group</label>
-        <span style="padding-left:20px">{{ Vform.Vblood }} </span>
+<div class="row" style="width:100%;">
+  <div class="col-6">
+    <h4 style="text-align:center;padding-top:3%;margin-left:15%;color:red;">Volunteer Registration form</h4>
+    <div class="wholeform" style="margin-top:4%;width:95%;box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);">
+      <div style="padding:30px;">
+        <form method="POST" style="padding:10px;">
+          {% csrf_token %}
+          {{ Vform.Vname | as_crispy_field }}
+          <div class="form-row">
+            <div class="form-group col-md-6 mb-0">
+              {{Vform.Vemail|as_crispy_field }}
+            </div>
+            <div class="form-group col-md-6 mb-0">
+              {{ Vform.Vphone|as_crispy_field }}
+            </div>
+          </div>
+          {{ Vform.Vhouse | as_crispy_field }}
+          <div class="form-row">
+            <div class="form-group col-md-6 mb-0">
+              {{Vform.Vlandmark|as_crispy_field }}
+            </div>
+            <div class="form-group col-md-6 mb-0">
+              {{ Vform.Vlocality|as_crispy_field }}
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6 mb-0">
+              {{Vform.Vcity|as_crispy_field }}
+            </div>
+            <div class="form-group col-md-6 mb-0">
+              {{ Vform.Vstate|as_crispy_field }}
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6 mb-0">
+              {{Vform.Vgender|as_crispy_field }}
+            </div>
+            <div class="form-group col-md-6 mb-0">
+              {{ Vform.Vblood|as_crispy_field }}
+            </div>
+          </div>
+          <center><input class="btn btn-success" style="width:50%;text-align:center;" type="submit" id="submit" name="" value="submit"></center>
+        </form>
       </div>
     </div>
-
-    <span style="padding-left:10px"><input id="submit" type="submit" name="" value="submit"></span>
-  </form>
+  </div>
+  <div class="col-6">
+    <img src="https://i.imgur.com/wuTVYPY.jpg" style="padding-top:11%;height:960px;width:100%;">
   </div>
 </div>
 {% endblock %}

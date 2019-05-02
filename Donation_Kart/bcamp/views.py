@@ -10,13 +10,10 @@ def BcampList(request):
     set=Bcamp.objects.all()
     for k in set :
         if date.today() > k.CampStopTime.date() :
-            print("In first if")
             Bcamp.objects.filter( CampId = k.CampId ).update(campstatus = "a")
         elif date.today() == k.CampStopTime.date() :
-            print("In second if")
             Bcamp.objects.filter( CampId = k.CampId ).update(campstatus = "b")
         elif date.today() < k.CampStopTime.date() :
-            print("In third if")
             Bcamp.objects.filter( CampId = k.CampId ).update(campstatus = "c")
 
     Loc=" "
@@ -26,7 +23,6 @@ def BcampList(request):
         if Fform.is_valid():
             Loc=Fform.cleaned_data['Location']
             Type=Fform.cleaned_data['type']
-            print(Loc)
 
     else :
         Fform=FilterForm()
@@ -58,7 +54,7 @@ def CampFormView(request):
     else:
         form=bcampForm()
 
-        return render(request,'bcamp/Campform.html',{'form': bcampForm })
+    return render(request,'bcamp/Campform.html',{'form': bcampForm })
 
 def NewVolForm(request):
     if request.method == "POST":

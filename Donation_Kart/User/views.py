@@ -7,6 +7,8 @@ from userlogin.models import Profile
 from django.contrib.auth.decorators import login_required
 from django.db import transaction,connection
 from User.forms import EventForm
+from funds.models import funds, Images
+
 
 @login_required(login_url='login')
 def home(request):
@@ -68,6 +70,12 @@ def events(request):
         events_eme_list.append(tuple(dlist))
     events_eme_list[:12]
     return render(request,'User/event2.html',context={'eventslist':eventslist,'events':events_eme_list,})
+
+
+def natdis(request):
+    relif = funds.objects.all()
+    imgs = funds.objects.all()
+    return render(request,'User/natdis.html',context={'events':relif,'imgs':imgs})
 
 
 @login_required(login_url='login')
@@ -140,7 +148,7 @@ def filter(request,id):
         dlist.append(e[14]-donated_quantity)
         events_eme_list.append(tuple(dlist))
     events_eme_list[:12]
-    return render(request,'User/event2.html',context={'events':events_eme_list})
+    return events(request)
 
 @login_required(login_url='login')
 def proceed(request):

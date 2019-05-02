@@ -14,7 +14,7 @@
 
 
     body{
-      background-color: #66B2FF;
+      background-color: #D3D3D3;
 
     }
 
@@ -25,11 +25,14 @@
     #submitbutton{
       border-radius:5px;
       width:95px;
+      border: solid #f7f7f9
     }
 
     .something{
       font-size:18px;
       border-radius:5px;
+      border : solid #f7f7f9;
+      font-size:15px;
     }
 
     .jumbotron{
@@ -58,7 +61,7 @@
             <td style="width:500px"><div style="float:left;text-align:left;padding:4px">Location{{ filter.Location }}</div>
             <div style="padding-top:4px;padding-left:280px">Type{{ filter.type }}</div></td>
             <td style="width:400px"><div style="float:left;text-align:justify"><input type="submit" id="submitbutton" name="" value="submit" ></div></td>
-            <td style="width:450px"><span> Want to be a Volunteer<br><a href="#">Register here</a></span></td>
+            <td style="width:450px"><span"> Want to be a Volunteer<br><a href="{% url 'bcamp:NewVolForm' %}">Register here</a></span></td>
         </form>
         </div>
       <tr>
@@ -73,11 +76,9 @@
             <div style="float:right">Start time: {{ b.CampStartTime }}<br>
             Stop time: {{ b.CampStopTime }}</div>
             {% if b.campstatus == "b" or b.campstatus == "c" %}
-              <a href="{% url 'bcamp:BloodCampForm' %}"><button>Register</button></a>
+              <a href="{% url 'bcamp:BloodCampForm' %}"><button class="something">Register</button></a>
             {% endif %}
-            {% if b.campstatus == "a" %}
-              <a href="#"><button class="something">Details</button></a>
-            {% endif %}
+            
           </div>
         {% endfor %}
       </div>

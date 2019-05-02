@@ -17,7 +17,7 @@ class Event(models.Model):
     requestedorganization=models.CharField(max_length =50 , blank=False, null = False)
     CHOICES = (('',"Select Type"),('1',"education"),('2',"NGO"),('3',"desasters"),)
     type=models.CharField(choices=CHOICES ,max_length =50, blank=False, null = False)
-    SUB = (('',"Select Subtype"),('1',"books"),('2',"money"),)
+    SUB = (('',"Select Subtype"),('1',"stationary"),('2',"support"),)
     subtype=models.CharField(choices=SUB,max_length =50, blank=False, null = False)
     description=models.CharField(max_length =500 , blank=False, null = False)
     verifierassigned=models.CharField(max_length =10 , blank=False, null = True)
